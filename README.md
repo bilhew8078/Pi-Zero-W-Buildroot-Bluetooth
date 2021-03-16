@@ -15,23 +15,34 @@ Buildroot Version: 2020-11-1314
 Bluez Version: 5.55
 
 Folder and file description/usage:
+
 -Buildroot
 --board
+
 ---pi0wbluetooth - COPY THIS ENTIRE FOLDER INTO THE BUILDROOT "board" FOLDER.
+
 ----bootfiles
+
 -----cmdline.txt - this file will be placed in the BOOT partition. It disables the console and splash to the display.
+
 -----config.txt - this file will be placed in the BOOT partition. It sets up the USB gadget, i2c-gpio, and parallel video.
+
 You should alter these two files as needed for your application. The USB gadget (SSH) is very useful in a headless application.
 
 ----linux_config
+
 -----pi0wbluetooth_linux_config - this file is used by Buildroot to configure the Linux kernel and automatically load
 the needed drivers.  Some drivers needed by my app are loaded but may not be needed.  Strongly suggested that you use
 this configuration to start, then modify once Bluetooth is working for you.
+
 ----overlay
+
 -----boot - this is an empty directory. I use it to mount the BOOT partition during development work.
 -----etc - this directory is overlaid on the one created by Buildroot. It contains the initialization files needed
 for Bluetooth and the USB Gadget (SSH).
+
 ------bluetooth
+
 -------main.conf - this file is used by bluetoothd.  The settings here are important. They will ensure that pairing works
 without a PIN or yes/no requirement on the headless Pi.  It also enables the Bluetooth adapter on bootup.
 ------dbus-1 - this directory and files within are the same as the one Buildroot creates.
