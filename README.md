@@ -17,6 +17,7 @@ Bluez Version: 5.55
 Folder and file description/usage:
 
 -Buildroot
+
 --board
 
 ---pi0wbluetooth - COPY THIS ENTIRE FOLDER INTO THE BUILDROOT "board" FOLDER.
