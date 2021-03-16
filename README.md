@@ -10,6 +10,10 @@ the USB gadget so that I can SSH into the Pi with a USB tether to a PC running a
 All Bluetooth control (discovery, listening, connection) must be done programmatically - in a C application running on the Pi.  I am not claiming
 that this is the only way, or best way to accomplish this - I'm sure there are better ways.  At least this works for me.
 
+It is assumed that you already know the basics of Buildroot.  Download and install, then copy the "board/pi0wbluetooth" folder
+into the Buildroot "board" directory, and copy the "configs/pi0wbluetooth_defconfig" file into the Buildroot "configs" directory. 
+At the Buildroot top directory, run "make pi0wbluetooth_defconfig". This will configure Buildroot.  Then run "make".
+
 Linux Version: 5.10.1
 Buildroot Version: 2020-11-1314
 Bluez Version: 5.55
@@ -94,4 +98,37 @@ require that you reset your PC's IP address used by the gadget.  You could also 
 ---pi0wbluetooth_defconfig - COPY THIS ENTIRE FOLDER INTO THE BUILDROOT "configs" FOLDER.
 This is the file you use to configure Buildroot. "make pi0wbluetooth_defconfig" will configure, 
 then run "make" to build your OS.  This takes a LONG time.
+
+***
+-Pi - these are the files specific to the BOOT partition and rootfs/etc directory for Bluetooth support.
+These files should be created and put in place by the Buildroot make.  I provide these for reference.
+
+--BOOT
+
+---cmdline.txt
+
+---config.txt
+
+--rootfs/etc
+
+---bluetooth
+
+----main.conf
+
+---init.d
+
+----S40bluetooth
+
+----S60btattach
+
+----S70apprun
+
+---network
+
+----interfaces - edit this file to change the desired IP address for the USB gadget SSH connection
+
+---inittab
+
+---profile - sets up a command line prompt that includes the path
+
 
