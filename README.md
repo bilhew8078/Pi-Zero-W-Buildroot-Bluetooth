@@ -9,5 +9,8 @@ All Bluetooth control (discovery, listening, connection) must be done programmat
 that this is the only way, or best way to accomplish this - I'm sure there are better ways.  At least this works for me.
 
 Linux Version: 5.10.1
+
 Bluez Version: 5.55
+
+Folder and file description/usage:
 
