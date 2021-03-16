@@ -1,4 +1,4 @@
-# for GOBOBOOK  09FEB2021
+# for Pi Zero Bluetooth  09FEB2021
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 
 if [ "$PS1" ]; then
@@ -19,5 +19,5 @@ for i in /etc/profile.d/*.sh ; do
 done
 unset i
 
-echo "Logged into GoboBook OS..."
+echo "Logged into Pi Zero Buildroot OS..."
 

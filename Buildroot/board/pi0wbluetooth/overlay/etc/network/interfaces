@@ -1,4 +1,4 @@
-# interface file for GOBOBOOK 09FEB2021
+# interface file for Pi Zero W Bluetooth 09FEB2021
 
 auto lo
 iface lo inet loopback
