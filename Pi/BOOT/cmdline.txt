@@ -1,0 +1,2 @@
+root=/dev/mmcblk0p2 rootwait console=null logo.nologo
+# fbcon=map:2 might need to be added

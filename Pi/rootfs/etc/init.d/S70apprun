@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Start goborun...
+#
+
+case "$1" in
+  start)
+	printf "Starting goborun: "
+	#modprobe i2c-dev
+	i2cset -y 11 0x1b 0x0c 0x00 0x00 0x00 0x13 i
+	i2cset -y 11 0x1b 0x0b 0x00 0x00 0x00 0x00 i
+	sdptool add SP
+	/opt/myapp.bin &
+	[ $? = 0 ] && echo "OK" && printf "\n" || echo "FAIL"
+	;;
+  stop)
+	printf "Can't stop goborun: "
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

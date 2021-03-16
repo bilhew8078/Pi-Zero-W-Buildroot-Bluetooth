@@ -1,0 +1,23 @@
+# for GOBOBOOK  09FEB2021
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+
+if [ "$PS1" ]; then
+	if [ "`id -u`" -eq 0 ]; then
+		export PS1='$(hostname):$(pwd)$ '
+	else
+		export PS1='$ '
+	fi
+fi
+
+export EDITOR='/usr/bin/nano'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		. $i
+	fi
+done
+unset i
+
+echo "Logged into GoboBook OS..."
+

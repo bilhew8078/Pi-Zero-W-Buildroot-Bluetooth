@@ -1,0 +1,37 @@
+# GoboBook config.txt file
+# 08MAR2021
+
+# Buildroot message:
+# We always use the same names, the real used variant is selected by
+# BR2_PACKAGE_RPI_FIRMWARE_{DEFAULT,X,CD} choice
+start_file=start.elf
+fixup_file=fixup.dat
+kernel=zImage
+
+# Keep the screen blank on boot
+disable_splash=1
+
+# How much memory in MB to assign to the GPU
+gpu_mem=256
+
+# enable the USB ethernet interface (USB0)
+dtoverlay=dwc2,dr_mode=peripheral
+
+# Setup i2c on alternative pins (regular i2c pins used for video)
+dtoverlay=i2c-gpio,i2c_gpio_sda=23,i2c_gpio_scl=24,i2c_gpio_delay_us=2
+
+# Setup the GPU to output 18 bit parallel video data for DLP
+dtoverlay=dpi18
+overscan_left=0
+overscan_right=0
+overscan_top=0
+overscan_bottom=0
+framebuffer_width=854
+framebuffer_height=480
+enable_dpi_lcd=1
+display_default_lcd=1
+dpi_group=2
+dpi_mode=87
+
+dpi_output_format=458773
+hdmi_timings=854 0 14 4 12 480 0 2 3 9 0 0 0 60 0 32000000 3
