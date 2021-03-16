@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Start btattach...
+#
+
+case "$1" in
+  start)
+	printf "Starting btattach: "
+	btattach -B /dev/ttyAMA0 -P bcm -S 115200 -N &
+	[ $? = 0 ] && echo "OK" && printf "\n" || echo "FAIL"
+	;;
+  stop)
+	printf "Can't stop btattach: "
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

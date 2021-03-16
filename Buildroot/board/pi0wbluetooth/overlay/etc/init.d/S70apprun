@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Start goborun...
+#
+
+case "$1" in
+  start)
+	printf "Starting apprun: "
+	#(this is for our specific application)
+	i2cset -y 11 0x1b 0x0c 0x00 0x00 0x00 0x13 i
+	i2cset -y 11 0x1b 0x0b 0x00 0x00 0x00 0x00 i
+	# you must have this to enable serial bluetooth comms
+	sdptool add SP
+	#uncomment below to auto start your application
+	#/opt/myapp.bin &
+	[ $? = 0 ] && echo "OK" && printf "\n" || echo "FAIL"
+	;;
+  stop)
+	printf "Can't stop goborun: "
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
